@@ -85,10 +85,41 @@ The device has now the OEM FirefoxOS system installed. You can now root the devi
 # Root Guide
 
 
-# ClockworkMod Guide
+Rooting is currently only temporarily possible as there's no signed *update.zip* file with a rooted kernel inside.
+Self-signed *update.zip* files can't be flashed using the preinstalled 3E recovery mod.
+
+The preinstalled fastboot can't flash boot partition, neither does the flash_image binary work properly.
+But, you can install su, daemonsu and chattr in a temporary booted session.
+
+ADB can't be rooted for now, because it requires **ro.secure=0** and **ro.debuggable=1** inside the */default.prop*,
+which lies inside the boot.img.
+
+
+Boot the device in fastboot mode. After being in fastboot mode, execute the following:
+
+```bash
+cd ./02-root;
+./01-boot.sh;
+```
+
+After the OS has booted properly, you can install the required su-binaries on the system via:
+
+```bash
+cd ./02-root;
+./02-install.sh;
+```
+
+
+# TWRP Guide
+
+TWRP is currently being ported by me, so it needs some time until it is ready.
+If you want to offer help, please write to the b2g-dev mailing list.
 
 
 # Custom update.zip Guide
+
+Custom update.zip files need a working TWRP or CWM recovery mod. The issue here is that fastboot can't flash system.img
+files directly due to its 256MB filesize limit on the device implementation.
 
 
 # LICENSE
